@@ -1,0 +1,29 @@
+spring:
+  session:
+    jdbc:
+      initialize-schema: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tech-ks-quartz?currentSchema=public
+    username: postgres
+    password: example
+  quartz:
+    auto-startup: true
+    waitForJobsToCompleteOnShutdown: true
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties.org.quartz:
+      jobStore:
+        driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+        tablePrefix: qrtz_
+        isClustered: true
+      scheduler:
+        skipUpdateCheck: true
+        instanceId: AUTO
+        instanceName: tech.ks.quartz.service
+      threadPool:
+        threadCount: 2
+  flyway:
+    enabled: true
+
+
