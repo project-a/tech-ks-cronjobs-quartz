@@ -26,6 +26,10 @@ dependencies {
     implementation("org.flywaydb:flyway-core:9.2.0")
     implementation("org.postgresql:postgresql:42.5.0")
     implementation("org.springframework.boot:spring-boot-starter-quartz:2.7.3")
+    /** In order to have quartz spring boot starter working properly the import below is necessary.
+     * Without it, you need to specify which job-store class you need to use, specify a data-source and
+     * include other libraries.
+     */
     implementation("org.springframework.boot:spring-boot-starter-jdbc:2.7.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

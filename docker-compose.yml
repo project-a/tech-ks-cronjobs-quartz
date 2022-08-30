@@ -1,6 +1,13 @@
-version: '2.1'
+version: '3.9'
 
 services:
+  pods:
+    build: .
+    deploy:
+      replicas: 4
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/tech-ks-quartz?currentSchema=public"
+    restart: always
   db:
     container_name: "db"
     image: postgres:12.3

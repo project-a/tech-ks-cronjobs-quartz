@@ -2,12 +2,18 @@ migrate:
 	./gradlew flywayMigrate
 
 up:
-	docker-compose -f ./docker/docker-compose.yml up -d
+	docker-compose up
 
 down:
-	docker-compose -f ./docker/docker-compose.yml down
+	docker-compose down
 
 db-up:
-	docker-compose -f ./docker/docker-compose.yml up -d db
+	docker-compose up -d db
 
-start: db-up migrate up
+jar:
+	./gradlew bootJar
+
+compose-build:
+	docker-compose build
+
+start: db-up jar migrate compose-build up

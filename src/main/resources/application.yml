@@ -24,6 +24,14 @@ spring:
       threadPool:
         threadCount: 2
   flyway:
-    enabled: true
+    enabled: false # migration done "manually"
 
 
+cron-jobs:
+  say-hello:
+    a-lot:
+      startDelayInSeconds: 5
+      periodInSeconds: 4
+    sometimes:
+      startDelayInSeconds: 2
+      periodInSeconds: 10
